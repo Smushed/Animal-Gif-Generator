@@ -1,6 +1,6 @@
 var animalsArray = ["Parakeet", "Grizzly Bear", "Bulldog", "Snake", "Shark", "Lion", "Hippopotamus", "Alligator"]
 
-function generateGifs(animal){
+function generateGifs(animal) {
     $(".gif-display").empty();
 
     var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=7rp4l9juI3COyB7bg0XLt5xDfSXaaF2E&limit=10&rating=g&rating=pg"
@@ -8,10 +8,10 @@ function generateGifs(animal){
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(function(response){
+    }).then(function (response) {
         var results = response.data;
 
-        for (var i = 0; i < results.length; i++){
+        for (var i = 0; i < results.length; i++) {
             var $div = $("<div>");
             var $p = $("<p>").text("Rating: " + results[i].rating)
             var $img = $("<img>");
@@ -24,14 +24,19 @@ function generateGifs(animal){
             $div.append($img);
 
             $(".gif-display").append($div);
-        }
-    })
-}
+        };
+    });
+    styleGifs();
+};
 
-function generateButtons(){
+function styleGifs() {
+    $(".gifDiv").css({ "background": "green" });
+};
+
+function generateButtons() {
     $(".button-display").empty();
 
-    for (var i = 0; i < animalsArray.length; i++){
+    for (var i = 0; i < animalsArray.length; i++) {
         var $btn = $("<button>");
         $btn.text(animalsArray[i]);
         $btn.attr("animal", animalsArray[i]);
@@ -41,11 +46,18 @@ function generateButtons(){
     };
 };
 
-$("body").on("click", ".animalButton", function() {
+$(".new-animal").on("click", function () {
+    var userInput = $(".user-input").val().trim();
+    if (userInput !== "") {
+        animalsArray.push(userInput);
+    };
+    generateButtons();
+});
+
+$("body").on("click", ".animalButton", function () {
     var animal = $(this).attr("animal");
-    console.log(animal);
     generateGifs(animal);
 });
 
-generateGifs();
+generateGifs(animalsArray[0]);
 generateButtons();
