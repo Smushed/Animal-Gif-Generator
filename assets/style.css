@@ -1,0 +1,15 @@
+.gifDiv{
+    float: left;
+    margin: 12.5px 10px;
+    border: 1px solid grey;
+    padding: 0 10px 10px 10px;
+}
+.animalButton{
+    margin: 5px;
+}
+.input-box{
+    margin-top: 250px;
+}
+.new-animal{
+    margin-left: 20px;
+}
