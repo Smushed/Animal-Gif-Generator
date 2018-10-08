@@ -3,7 +3,7 @@ var animalsArray = ["Parakeet", "Grizzly Bear", "Bulldog", "Snake", "Shark", "Li
 function generateGifs(animal) {
     $(".gif-display").empty();
 
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=7rp4l9juI3COyB7bg0XLt5xDfSXaaF2E&limit=10&rating=g&rating=pg"
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=7rp4l9juI3COyB7bg0XLt5xDfSXaaF2E&limit=10&rating=g&rating=pg"
 
     $.ajax({
         url: queryURL,
